@@ -23,7 +23,6 @@
 			text-align: center;
 			margin: 0;
 		}
-
 		div {
 			background: #000;
 			height: 500px;
@@ -32,7 +31,6 @@
 		div.inverted{
 			background: #fff;
 		}
-
 		h1 {
 			color: #fff;
 			margin: 0;
@@ -40,29 +38,71 @@
 		h1.inverted{
 			color: #000;
 		}
+		button, h4, h3, h2{
+			margin: 200px auto;
+		} 
+		.hidden{
+			display: none;
+		}
   	</style>
 </head>
 <body>
-	<!-- made for the glory of satan, ofc by http://github.com/cbrwizard -->
-	<div>
-		<h1>If you can still see it, you're not epilleptic. Congratulations!</h1>
+	<!-- made for the glory of satan, ofc https://github.com/cbrwizard/am_i_epilleptic -->
+	<div class="hidden">
+		<h1 class="hidden">NO YOU'RE NOT</h1>
 	</div>
+	<button onclick="startTest()">Start test</button>	
+	<h4 class="hidden">3</h4>
+	<h3 class="hidden">2</h3>
+	<h2 class="hidden">1</h2>
 
 	<script type="text/javascript">
-		var back = document.getElementsByTagName("div")[0],
-			text = document.getElementsByTagName("h1")[0],
-			inverted = false;
-		function invertShit(){
-			if (inverted){
-				back.className = "";
-				text.className = "";
-			} else {
-				back.className = "inverted";
-				text.className = "inverted";
+		function startTest(){
+			var back = document.getElementsByTagName("div")[0],
+				text = document.getElementsByTagName("h1")[0],
+				button = document.getElementsByTagName("button")[0],
+				h4 = document.getElementsByTagName("h4")[0],
+				h3 = document.getElementsByTagName("h3")[0],
+				h2 = document.getElementsByTagName("h2")[0],
+				className,
+				text_shown = false;
+				inverted = false;
+
+			function toggleDisplay(to_hide, to_show){
+				to_hide.className = "hidden";
+				to_show.className = "";
 			}
-			inverted = !inverted;
+
+			function invertShit(){
+				if (inverted){
+					className = "";
+				} else {
+					className = "inverted";
+				}
+				back.className = className;
+				if (text_shown){
+					text.className = className;
+				}
+				inverted = !inverted;
+			}
+
+			toggleDisplay(button, h4);
+
+			setTimeout(function(){
+				toggleDisplay(h4, h3);
+				setTimeout(function(){
+					toggleDisplay(h3, h2);
+					setTimeout(function(){
+						toggleDisplay(h2, back);
+						setInterval(invertShit, 1);
+						setTimeout(function(){
+							text.className = text.className.replace(/\bhidden\b/,'');
+							text_shown = true;
+						}, 1000);
+					}, 500);
+				}, 500);
+			}, 500);
 		}
-		setInterval(invertShit, 0.01);
 	</script>
 </body>
 </html>
