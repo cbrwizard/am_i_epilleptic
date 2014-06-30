@@ -18,29 +18,59 @@
 	<meta content="https://i.chzbgr.com/maxW500/4587122688/h747BE84A/" name="image" />
 
 	<style type="text/css">
+		html, body{
+		    height: 100%;
+		}
 		body {
 			background: #fff;
 			text-align: center;
 			margin: 0;
 		}
+		section {
+			height: 100%;
+		}
+		div,button{
+		    position: absolute;     
+		    top: 0;     
+		    bottom: 0;
+		    left: 0; 
+		    right: 0;      
+		    margin: auto;
+		}
 		div {
 			background: #000;
-			height: 500px;
 		}
 		div.inverted{
 			background: #fff;
 		}
+		button{
+			cursor: pointer;
+		    width: 100px;     
+		    height: 50px;    
+		}
+		h1,h2,h3,h4{
+			margin-top: -100px;
+			top: 50%;
+			line-height: 200px;
+			position: absolute;
+			width: 100%;
+		}
 		h1 {
 			color: #fff;
-			margin: 0;
-			font: 6em/460px bold arial, sans-serif;
+			font: 6em/200px bold arial, sans-serif;
 		}
 		h1.inverted{
 			color: #000;
 		}
-		button, h4, h3, h2{
-			margin: 200px auto;
-		} 
+		h4{
+			font-size: 2em;
+		}
+		h3{
+			font-size: 3em;
+		}
+		h2{
+			font-size: 4em;
+		}
 		.hidden{
 			display: none;
 		}
@@ -48,13 +78,15 @@
 </head>
 <body>
 	<!-- made for the glory of satan, ofc https://github.com/cbrwizard/am_i_epilleptic -->
-	<div class="hidden">
-		<h1 class="hidden">NO YOU'RE NOT</h1>
-	</div>
-	<button onclick="startTest()">Start test</button>	
-	<h4 class="hidden">3</h4>
-	<h3 class="hidden">2</h3>
-	<h2 class="hidden">1</h2>
+	<section>
+		<div class="hidden">
+			<h1 class="hidden">NO YOU'RE NOT</h1>
+		</div>
+		<button onclick="startTest()">Start test</button>	
+		<h4 class="hidden">3</h4>
+		<h3 class="hidden">2</h3>
+		<h2 class="hidden">1</h2>
+	</section>
 
 	<script type="text/javascript">
 		function startTest(){
@@ -94,7 +126,7 @@
 					toggleDisplay(h3, h2);
 					setTimeout(function(){
 						toggleDisplay(h2, back);
-						setInterval(invertShit, 1);
+						setInterval(invertShit, 10);
 						setTimeout(function(){
 							text.className = text.className.replace(/\bhidden\b/,'');
 							text_shown = true;
